@@ -61,9 +61,9 @@ const guildSessionMiddleware = async (
       return;
     }
 
-    const botGuild = await getGuild(guildId);
+    const botInGuild = await getGuild(guildId);
 
-    if (!botGuild) {
+    if (!botInGuild) {
       // client will be asked to invite bot to the guild
       res.status(404).json({ resource: 'botGuild' });
       return;

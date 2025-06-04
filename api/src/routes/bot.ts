@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import botMiddleware from '../../middleware/bot.js';
-import Guild from '../../models/Guild.js';
+import botMiddleware from '../middleware/bot.js';
+import Guild from '../models/Guild.js';
 
 const router = Router();
 
 // http://localhost:3000/bot/guilds/{guildId}
-router.get('/:guildId', botMiddleware, async (req, res) => {
+router.get('/guilds/:guildId', botMiddleware, async (req, res) => {
   try {
     const guildId = req.params.guildId;
     let guild = await Guild.findOne({ id: guildId });

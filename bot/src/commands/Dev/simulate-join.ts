@@ -2,6 +2,7 @@ import type { CommandOptions, SlashCommandProps } from 'commandkit';
 import {
   type GuildMember,
   InteractionContextType,
+  MessageFlags,
   SlashCommandBuilder,
 } from 'discord.js';
 
@@ -20,7 +21,10 @@ export const run = ({ interaction, client }: SlashCommandProps) => {
     interaction.member) as GuildMember;
 
   if (!targetMember) {
-    interaction.reply({ content: 'Invalid member', ephemeral: true });
+    interaction.reply({
+      content: 'Invalid member',
+      flags: MessageFlags.Ephemeral,
+    });
     return;
   }
 
@@ -28,7 +32,7 @@ export const run = ({ interaction, client }: SlashCommandProps) => {
 
   interaction.reply({
     content: `Simulated join for ${targetMember.user.username}`,
-    ephemeral: true,
+    flags: MessageFlags.Ephemeral,
   });
 };
 

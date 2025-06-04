@@ -1,13 +1,15 @@
 import { Router } from 'express';
-import authRoutes from './routes/auth.js';
-import guildsRoutes from './routes/guilds.js';
-import botGuildRoutes from './routes/bot/guild.js';
 import authMiddleware from './middleware/auth.js';
+import authRoutes from './routes/auth.js';
+import botRoutes from './routes/bot.js';
+import guildsRoutes from './routes/guilds.js';
+import userRoutes from './routes/user.js';
 
 const router = Router();
 
 router.use('/auth', authRoutes);
 router.use('/guilds', authMiddleware, guildsRoutes);
-router.use('/bot/guilds', botGuildRoutes);
+router.use('/bot', botRoutes);
+router.use('/user', userRoutes);
 
 export default router;
